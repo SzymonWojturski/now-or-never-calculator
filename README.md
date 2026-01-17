@@ -28,7 +28,7 @@
 ## GitHub Pages
 
 The application is deployed and works directly on GitHub Pages:  
-[https://YourUsername.github.io/now-or-never-calculator](https://YourUsername.github.io/now-or-never-calculator)  
+[https://szymonwojturski.github.io/now-or-never-calculator](https://szymonwojturski.github.io/now-or-never-calculator)  
 
 ## Project Structure
 
