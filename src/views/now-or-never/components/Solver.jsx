@@ -1,8 +1,12 @@
-import highsFactory from 'highs'
+import highsFactory from 'highs';
 
 export const loadSolver = async () => {
-  return await highsFactory({ locateFile: file => `/${file}` })
-}
+  const highs = await highsFactory({
+    locateFile: file => `${import.meta.env.BASE_URL}${file}`
+  });
+  return highs;
+};
+
 
 export const solveProblem = async (highs, inputs) => {
   const { shells, hammers, demons, crystals, shellFlag, hammerFlag } = inputs

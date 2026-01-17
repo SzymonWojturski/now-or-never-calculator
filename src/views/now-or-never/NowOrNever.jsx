@@ -24,11 +24,14 @@ function NowOrNever() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    loadSolver().then(h => {
-      setHighs(h)
-      setSolverLoading(false)
-    })
-  }, [])
+    loadSolver()
+      .then(h => {
+        setHighs(h)
+        setSolverLoading(false)
+      })
+      .catch(err => console.error(err));
+  }, []);
+
 
   const handleSolve = async () => {
     if (!highs) return
