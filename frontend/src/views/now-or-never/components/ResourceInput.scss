@@ -1,0 +1,120 @@
+.resource-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  position: relative;
+}
+
+.triangle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangle svg {
+  width: 24px;
+  height: 16px;
+  display: block;
+}
+
+.triangle svg polygon {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.resource-input-box {
+  position: relative;
+  width: 160px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resource-input-field {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 45px;
+  text-align: center;
+  outline: none;
+  z-index: 2;
+  padding: 6px 0;
+  line-height: 1;
+  -webkit-text-stroke: 1.6px #000;
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
+}
+
+.resource-input-field .MuiInputBase-input,
+.resource-input-field input {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 1;
+  -moz-appearance: textfield;
+  -webkit-text-stroke: 1.6px #000;
+}
+
+.resource-input-field input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.resource-input-field .MuiInputBase-root::before,
+.resource-input-field .MuiInputBase-root::after {
+  display: none;
+}
+
+.resource-input-field input::-webkit-outer-spin-button,
+.resource-input-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.resource-input-icon {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resource-input-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.triangle-down {
+  margin-top: 20px;
+}

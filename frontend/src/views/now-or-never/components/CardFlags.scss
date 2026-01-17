@@ -1,0 +1,47 @@
+.card-flags {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .checkmark {
+    width: 32px;
+    height: 32px;
+    background-color:rgb(41, 20, 39);
+    border: 2px solid rgb(247, 200, 255);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+  }
+
+  input:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 12px;
+    height: 20px;
+    border: solid rgb(217, 0, 255);
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+  }
+}
