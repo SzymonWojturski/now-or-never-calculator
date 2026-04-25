@@ -10,6 +10,9 @@ export default function SolutionQueue({ solutions }) {
           key={i}
           resources={item.resources}
           result={item.result}
+          tradeValues={item.tradeValues}
+          shellFlag={item.shellFlag}
+          hammerFlag={item.hammerFlag}
         />
       ))}
     </Box>

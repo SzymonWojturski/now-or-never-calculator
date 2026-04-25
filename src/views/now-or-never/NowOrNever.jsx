@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
 import './NowOrNever.scss'
 import { loadSolver, solveProblem } from './components/Solver'
 import ResourceInput from './components/ResourceInput.jsx'
@@ -32,29 +30,24 @@ function NowOrNever() {
       .catch(err => console.error(err));
   }, []);
 
-
   const handleSolve = async () => {
     if (!highs) return
     setLoading(true)
     try {
       const sol = await solveProblem(highs, inputs)
-
-
       setSolutions(prev => {
         const next = [
           ...prev,
           {
-            resources: [
-              inputs.shells,
-              inputs.hammers,
-              inputs.demons,
-              inputs.crystals
-            ],
-            result: Math.floor(sol.objective)
+            resources: [inputs.shells, inputs.hammers, inputs.demons, inputs.crystals],
+            result: Math.floor(sol.objective),
+            tradeValues: sol.values,
+            shellFlag: sol.shellFlag,
+            hammerFlag: sol.hammerFlag,
           }
         ]
-        return next.length > 10 ? next.slice(next.length - 10) : next
-     })
+        return next.length > 4 ? next.slice(next.length - 4) : next
+      })
     } finally {
       setLoading(false)
     }
@@ -64,10 +57,16 @@ function NowOrNever() {
     <Box className="now-or-never-wrapper">
       <Box className="now-or-never-background" />
       <Box className="now-or-never-content">
-      <h1>Now or Never Calculator</h1>
-      <p>
-        Welcome to the Now or Never calculator! Fill in your resources, confirm whether you have the necessary cards for better trades, and check the most profitable exchanges.
-      </p>        <Box className="inputs-row">
+        <div className="header-block">
+          <h1>Now or Never</h1>
+          <p className="subtitle">Optimal Trade Calculator</p>
+        </div>
+
+        <p className="description">
+          Fill in your resources, confirm whether you have the necessary cards for better trades, and check the most profitable exchanges.
+        </p>
+
+        <Box className="inputs-row">
           {['shells', 'hammers', 'demons', 'crystals'].map(key => (
             <ResourceInput
               key={key}
@@ -80,7 +79,6 @@ function NowOrNever() {
           ))}
         </Box>
 
-        
         <CardFlags
           flags={{ shellFlag: inputs.shellFlag, hammerFlag: inputs.hammerFlag }}
           onChange={(newFlags) => setInputs(prev => ({ ...prev, ...newFlags }))}
@@ -92,14 +90,16 @@ function NowOrNever() {
             onClick={handleSolve}
             disabled={solverLoading || loading}
           >
-           Calculate 
+            {loading ? <span className="btn-loading">...</span> : 'Calculate'}
           </button>
         </div>
-      <p>
-      Last 10 cases:
-      </p>
 
-        <SolutionQueue solutions={solutions} />
+        {solutions.length > 0 && (
+          <>
+            <div className="section-label">Last {solutions.length} calculation{solutions.length > 1 ? 's' : ''} (max 4)</div>
+            <SolutionQueue solutions={solutions} />
+          </>
+        )}
       </Box>
     </Box>
   )

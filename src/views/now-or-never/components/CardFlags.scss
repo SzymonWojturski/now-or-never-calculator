@@ -1,20 +1,28 @@
 .card-flags {
   display: flex;
   justify-content: center;
-  gap: 60px;
-  margin-top: 30px;
+  gap: 40px;
+  margin-top: 28px;
+  padding: 20px 0 4px;
 }
 
 .custom-checkbox {
   display: flex;
   align-items: center;
   flex-direction: row;
-  gap: 12px;
+  gap: 14px;
   cursor: pointer;
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
+  font-family: 'Crimson Pro', serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(220, 190, 255, 0.8);
   user-select: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: rgba(240, 220, 255, 1);
+  }
 
   input {
     position: absolute;
@@ -24,24 +32,37 @@
   }
 
   .checkmark {
-    width: 32px;
-    height: 32px;
-    background-color:rgb(41, 20, 39);
-    border: 2px solid rgb(247, 200, 255);
-    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    background: rgba(30, 5, 50, 0.9);
+    border: 1px solid rgba(200, 130, 255, 0.4);
+    border-radius: 3px;
     display: inline-block;
     position: relative;
+    flex-shrink: 0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  &:hover .checkmark {
+    border-color: rgba(220, 160, 255, 0.7);
+    box-shadow: 0 0 8px rgba(180, 80, 255, 0.3);
+  }
+
+  input:checked + .checkmark {
+    background: rgba(120, 30, 180, 0.5);
+    border-color: rgba(210, 140, 255, 0.7);
+    box-shadow: 0 0 12px rgba(180, 80, 255, 0.4);
   }
 
   input:checked + .checkmark::after {
     content: '';
     position: absolute;
-    left: 8px;
-    top: 4px;
-    width: 12px;
-    height: 20px;
-    border: solid rgb(217, 0, 255);
-    border-width: 0 4px 4px 0;
+    left: 6px;
+    top: 3px;
+    width: 8px;
+    height: 14px;
+    border: solid rgba(220, 170, 255, 0.95);
+    border-width: 0 2.5px 2.5px 0;
     transform: rotate(45deg);
   }
 }

@@ -46,7 +46,7 @@ export default function ResourceInput({ value, onChange, min, max, step = 1, ico
           type="number"
           value={value}
           onChange={handleInput}
-          inputProps={{ min, step }}
+          inputProps={{ min, step, style: { fontFamily: "'Cinzel Decorative', serif", fontWeight: 700 } }}
           InputProps={{ disableUnderline: true }}
           variant="standard"
         />
